@@ -31,7 +31,6 @@ class PokemonListViewModel: ViewModel() {
                 return@launch
             }
             setLoadingState()
-            delay(2000)
             repository.getPokemonList(limit, offset)
                 .fold(
                     onSuccess = { pokemonList ->
@@ -45,6 +44,13 @@ class PokemonListViewModel: ViewModel() {
                         setErrorState()
                     }
                 )
+        }
+    }
+
+    fun fetchPokemonList(pokemon: Pokemon) {
+        viewModelScope.launch {
+            repository.getPokemonDetail(pokemon.url)
+
         }
     }
 

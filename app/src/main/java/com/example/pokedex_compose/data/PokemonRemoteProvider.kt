@@ -8,4 +8,8 @@ class PokemonRemoteProvider {
     suspend fun getPokemonList(limit: Int, offset: Int) : Response<PokemonResponseDto> {
         return pokemonClient.getPokemonList(limit, offset)
     }
+
+    suspend fun getPokemonDetail(url: String) : Response<PokemonDetailDto> {
+        return pokemonClient.getPokemonDetail(url)
+    }
 }
